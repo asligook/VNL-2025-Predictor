@@ -3,18 +3,23 @@ import xgboost as xgb
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
+import os
 
-# Load DataFrames
-world_df = pd.read_csv('world_df.csv')
-team_stats_df = pd.read_csv('team_stats.csv')
+root_dir = os.path.dirname(__file__)
+project_root = os.path.abspath(os.path.join(root_dir, '..'))
+
+
+
+world_df = pd.read_csv(f'{project_root}/data/world_df.csv')
+team_stats_df = pd.read_csv(f'{project_root}/data/team_stats.csv')
 
 # Load models
-logistic_model = joblib.load('logistic_model.pkl')
-random_forest_model = joblib.load('random_forest_model.pkl')
-neural_net_model = joblib.load('neural_net_model.pkl')
+logistic_model = joblib.load(f'{project_root}/models/logistic_model.pkl')
+random_forest_model = joblib.load(f'{project_root}/models/random_forest_model.pkl')
+neural_net_model = joblib.load(f'{project_root}/models/neural_net_model.pkl')
 
 xgb_model = xgb.XGBClassifier()
-xgb_model.load_model('xgboost_model.json')
+xgb_model.load_model(f'{project_root}/models/xgboost_model.json')
 
 # Combine into dictionary (same as before)
 trained_models = {
@@ -24,7 +29,7 @@ trained_models = {
     'Neural Net': neural_net_model
 }
 
-# --- Prepare input ---
+# --- Prepare input ---s
 def prepare_match_input(team_a_code, team_b_code):
     a_row = world_df.loc[world_df['Code'] == team_a_code].iloc[0]
     b_row = world_df.loc[world_df['Code'] == team_b_code].iloc[0]
