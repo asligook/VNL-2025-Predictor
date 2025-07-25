@@ -28,4 +28,6 @@ After the installation, run this command to view Stremlit app on your local mach
 
 Now you can simulate the tournament and see the predicted winner! 🏆
 
-**Ps.** Do not forget to check the official match results after the quarter-finals next week to see what will actually happen!
+**Ps.** Do not forget to check the official match results after the quarter-finals next week to see what will actually happen.
+
+25.07.2025 update -- Quarter finals are predicted with 4/4 accuracy! Let's see what's going to happen in the semi-finals!
